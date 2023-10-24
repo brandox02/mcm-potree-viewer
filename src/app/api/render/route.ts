@@ -5,6 +5,7 @@ import AdmZip from 'adm-zip';
 export async function POST(request: Request) {
    async function unzipFileFromURL(url: string, outputDirectory: string) {
       try {
+         console.log('eoo')
          // Fetch the zip file
          const response = await axios.get(url, { responseType: 'arraybuffer' });
          // console.log({ response })
@@ -14,7 +15,7 @@ export async function POST(request: Request) {
          const zip = new AdmZip(response.data);
 
          // Extract the zip contents to the specified directory
-         zip.extractAllTo(outputDirectory, true);
+         zip.extr(outputDirectory, true);
 
          console.log('Zip file successfully extracted to:', outputDirectory);
       } catch (error) {
